@@ -4,6 +4,7 @@ var tower,towerimage
 var climber,climbergroup,climberimage
 var invisibleblock,invisibleblockgroup;
 
+
 function preload(){
   ghostimage=loadImage("ghost-standing.png");
   towerimage=loadImage("tower.png");
