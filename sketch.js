@@ -3,6 +3,7 @@ var door,doorgroup,doorimage
 var tower,towerimage
 var climber,climbergroup,climberimage
 var invisibleblock,invisibleblockgroup;
+var gameState="play"
 
 
 function preload(){
@@ -26,8 +27,8 @@ function setup(){
 }
 function draw(){
   background("white");
-  
-  tower.velocityY=6
+  if (gameSate==="play"){
+    tower.velocityY=6
   if (tower.y>600){
     tower.y=300
   }
@@ -49,6 +50,19 @@ function draw(){
     spawndoors();
   
   ghost.depth=tower.depth+1
+    if (ghost.isTouching(invisibleblock)||ghost.y<0){
+      gameState="end"
+    }
+  }
+    if (gameState==="end"){
+      text("GAMEOVER",300,300);
+      tower.velocityY=0
+      ghost.velocityY=0
+      
+    }
+      
+  
+  
   drawSprites();
 }
 function spawndoors(){
